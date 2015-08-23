@@ -57,6 +57,7 @@ var NODE = "node ", // intentional extra space
     // Files
     MAKEFILE = "./Makefile.js",
     PACKAGE = "./package.json",
+    RULE_DOC_CONFIG = "./conf/rule-doc-config.json",
     /* eslint-disable no-use-before-define */
     JS_FILES = find("lib/").filter(fileType("js")).join(" "),
     JSON_FILES = find("conf/").filter(fileType("json")).join(" ") + " .eslintrc",
@@ -360,7 +361,7 @@ target.lint = function() {
     }
 
     echo("Validating Rule Doc Code Examples");
-    lastReturn = exec(ESLINT + PLUGIN_MARKDOWN + RULES_DOCS_DIR + " --no-eslintrc --ext .md --env es6");
+    lastReturn = exec(ESLINT + PLUGIN_MARKDOWN + RULES_DOCS_DIR + " --no-eslintrc --ext .md --config " + RULE_DOC_CONFIG);
     if (lastReturn.code !== 0) {
         errors++;
     }
