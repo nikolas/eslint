@@ -14,47 +14,48 @@ This rule aims to ensure having consistent line endings independent of operating
 
 The following patterns are considered warnings:
 
-```
+```js
 /*eslint linebreak-style: 2*/
 
-var a = 'a',\r\n
-    b = 'b';\n
+var a = 'a', // \r\n /*error Expected linebreaks to be 'LF' but found 'CRLF'.*/
+    b = 'b'; // \n
 ```
 
-```
+```js
 /*eslint linebreak-style: [2, "unix"]*/
 
-var a = 'a';\r\n
-```
+var a = 'a'; // \r\n /*error Expected linebreaks to be 'LF' but found 'CRLF'.*/
 
 ```
+
+```js
 /*eslint linebreak-style: [2, "windows"]*/
 
-var a = 'a';\n
+var a = 'a';// \n    /*error Expected linebreaks to be 'CRLF' but found 'LF'.*/
 ```
 
 The following patterns are not warnings:
 
-```
+```js
 /*eslint linebreak-style: [2, "unix"]*/
 
-var a = 'a',\n
-    b = 'b';\n
-\n
-function foo(params) {\n
+var a = 'a', // \n
+    b = 'b'; // \n
+// \n
+function foo(params) {// \n
     // do stuff \n
-}\n
+}// \n
 ```
 
-```
+```js
 /*eslint linebreak-style: [2, "windows"]*/
 
-var a = 'a',\r\n
-    b = 'b';\r\n
-\r\n
-function foo(params) {\r\n
+var a = 'a', // \r\n
+    b = 'b'; // \r\n
+// \r\n
+function foo(params) { // \r\n
     // do stuff \r\n
-}\r\n
+} // \r\n
 ```
 
 ### Options
